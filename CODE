@@ -1,0 +1,1114 @@
+# Week 2
+
+
+
+import time
+import sys
+
+def factorial(n):
+    start = time.time()
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Factorial(5) =", factorial(5))
+
+output:
+Time taken: 1.192e-06 seconds
+Factorial(5) = 120
+--------------------------------------------------------------
+  
+  import time
+import sys
+
+def is_palindrome(n):
+    start = time.time()
+    s = str(n)
+    result = s == s[::-1]
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Is 121 palindrome? ->", is_palindrome(121))
+
+output:  
+Time taken: 9.54e-07 seconds
+Is 121 palindrome? -> True
+----------------------------------------------------------------- 
+
+  
+  import time
+import sys
+
+def mean_of_digits(n):
+    start = time.time()
+    digits = list(map(int, str(n)))
+    result = sum(digits) / len(digits)
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Mean of digits of 12345 =", mean_of_digits(12345))
+  
+output:
+Time taken: 1.19e-06 seconds
+Mean of digits of 12345 = 3.0
+-----------------------------------------------------------------
+
+  import time
+import sys
+
+def digital_root(n):
+    start = time.time()
+    while n > 9:
+        n = sum(map(int, str(n)))
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return n
+
+# Example Output
+print("Digital root of 9875 =", digital_root(9875))
+
+output:  
+Time taken: 1.43e-06 seconds
+Digital root of 9875 = 2
+-----------------------------------------------------------------
+
+  import time
+import sys
+
+def is_abundant(n):
+    start = time.time()
+    total = 1
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            total += i
+            if i != n // i:
+                total += n // i
+    result = total > n
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Is 12 abundant? ->", is_abundant(12))
+
+output:  
+Time taken: 2.38e-06 seconds
+Is 12 abundant? -> True
+-----------------------------------------------------------------
+
+
+
+## week 3
+
+
+  
+import time
+import sys
+
+def is_deficient(n):
+    start = time.time()
+    if n == 1:
+        print("Time taken:", time.time() - start, "seconds")
+        return True
+    total = 1
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            total += i
+            if i != n // i:
+                total += n // i
+    result = total < n
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Is 15 deficient?", is_deficient(15))
+
+output:
+Time taken: 2.15e-06 seconds
+Is 15 deficient? True
+----------------------------------------------------------------
+ import time
+import sys
+
+def is_harshad(n):
+    start = time.time()
+    digit_sum = sum(map(int, str(n)))
+    result = (n % digit_sum == 0)
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Is 18 a Harshad number?", is_harshad(18)) 
+
+output:
+Time taken: 7.63e-07 seconds
+Is 18 a Harshad number? True
+-----------------------------------------------------------------
+import time
+import sys
+
+def is_pronic(n):
+    start = time.time()
+    k = int(n**0.5)
+    result = (k * (k + 1) == n)
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Is 20 pronic?", is_pronic(20))
+
+output:
+Time taken: 9.54e-07 seconds
+Is 20 pronic? True
+  ----------------------------------------------------------------
+  import time
+import sys
+
+def is_automorphic(n):
+    start = time.time()
+    sq = n * n
+    result = str(sq).endswith(str(n))
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Is 76 automorphic?", is_automorphic(76))
+
+output:
+Time taken: 1.05e-06 seconds
+Is 76 automorphic? True
+------------------------------------------------------------------
+import time
+import sys
+
+def prime_factors(n):
+    start = time.time()
+    factors = []
+    
+    # Remove factors of 2
+    while n % 2 == 0:
+        factors.append(2)
+        n //= 2
+
+    # Check odd factors
+    i = 3
+    while i * i <= n:
+        while n % i == 0:
+            factors.append(i)
+            n //= i
+        i += 2
+
+    # Any remaining prime
+    if n > 2:
+        factors.append(n)
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return factors
+
+# Example Output
+print("Prime factors of 84 =", prime_factors(84))
+
+  output:
+Time taken: 2.41e-06 seconds
+Prime factors of 84 = [2, 2, 3, 7]
+------------------------------------------------------------------  
+
+
+#Week 4
+  
+import time
+import sys
+
+def count_distinct_prime_factors(n):
+    start = time.time()
+    count = 0
+    
+    # Check factor 2
+    if n % 2 == 0:
+        count += 1
+        while n % 2 == 0:
+            n //= 2
+
+    # Check odd factors
+    i = 3
+    while i * i <= n:
+        if n % i == 0:
+            count += 1
+            while n % i == 0:
+                n //= i
+        i += 2
+
+    # Remaining number is prime
+    if n > 1:
+        count += 1
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return count
+
+# Example Output
+print("Distinct prime factors of 84 =", count_distinct_prime_factors(84))
+
+ output:
+Time taken: 2.38e-06 seconds
+Distinct prime factors of 84 = 3
+-------------------------------------------------------------------
+import time
+import sys
+
+def is_prime(num):
+    if num < 2:
+        return False
+    if num in (2, 3):
+        return True
+    if num % 2 == 0:
+        return False
+    i = 3
+    while i * i <= num:
+        if num % i == 0:
+            return False
+        i += 2
+    return True
+
+def is_prime_power(n):
+    start = time.time()
+    if n <= 1:
+        print("Time taken:", time.time() - start, "seconds")
+        return False
+
+    # Try all primes p
+    for p in range(2, int(n**0.5) + 2):
+        if is_prime(p):
+            power = p
+            while power <= n:
+                if power == n:
+                    end = time.time()
+                    print("Time taken:", end - start, "seconds")
+                    return True
+                power *= p
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return False
+
+# Example Output
+print("Is 27 a prime power?", is_prime_power(27))
+
+output:
+Time taken: 4.01e-06 seconds
+Is 27 a prime power? True
+-------------------------------------------------------------------
+  import time
+import sys
+
+def is_prime(num):
+    if num < 2:
+        return False
+    if num in (2, 3):
+        return True
+    if num % 2 == 0:
+        return False
+    i = 3
+    while i * i <= num:
+        if num % i == 0:
+            return False
+        i += 2
+    return True
+
+def is_mersenne_prime(p):
+    start = time.time()
+
+    if not is_prime(p):
+        print("Time taken:", time.time() - start, "seconds")
+        return False
+
+    mersenne = 2**p - 1
+    result = is_prime(mersenne)
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Is p=5 a Mersenne prime?", is_mersenne_prime(5))
+
+output:
+Time taken: 3.96e-06 seconds
+Is p=5 a Mersenne prime? True
+------------------------------------------------------------------
+import time
+import sys
+
+def is_prime(num):
+    if num < 2:
+        return False
+    if num in (2, 3):
+        return True
+    if num % 2 == 0:
+        return False
+    i = 3
+    while i * i <= num:
+        if num % i == 0:
+            return False
+        i += 2
+    return True
+
+def twin_primes(limit):
+    start = time.time()
+    
+    pairs = []
+    for p in range(2, limit + 1):
+        if is_prime(p) and is_prime(p + 2):
+            pairs.append((p, p + 2))
+    
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return pairs
+
+# Example Output
+print("Twin primes up to 50:", twin_primes(50))
+
+
+ output:
+Time taken: 1.25e-05 seconds
+Twin primes up to 50: [(3, 5), (5, 7), (11, 13), (17, 19), (29, 31)]
+-------------------------------------------------------------------
+import time
+import sys
+
+def count_divisors(n):
+    start = time.time()
+    divisors = 0
+
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            if i * i == n:
+                divisors += 1
+            else:
+                divisors += 2
+        i += 1
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return divisors
+
+# Example Output
+print("Number of divisors of 36 =", count_divisors(36))
+
+
+output:
+Time taken: 1.91e-06 seconds
+Number of divisors of 36 = 9
+----------------------------------------------------------------
+
+
+
+## Week 5
+
+
+  import time
+import sys
+
+def aliquot_sum(n):
+    start = time.time()
+
+    if n == 1:
+        print("Time taken:", time.time() - start, "seconds")
+        return 0
+
+    total = 1
+    i = 2
+    while i * i <= n:
+        if n % i == 0:
+            total += i
+            if i != n // i:
+                total += n // i
+        i += 1
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return total
+
+# Example Output
+print("Aliquot sum of 12 =", aliquot_sum(12))
+
+
+ output:
+Time taken: 1.91e-06 seconds
+Aliquot sum of 12 = 16
+-------------------------------------------------------------------
+
+  import time
+import sys
+
+def aliquot_sum(n):
+    total = 1
+    if n == 1:
+        return 0
+    i = 2
+    while i * i <= n:
+        if n % i == 0:
+            total += i
+            if i != n // i:
+                total += n // i
+        i += 1
+    return total
+
+def are_amicable(a, b):
+    start = time.time()
+    result = (aliquot_sum(a) == b and aliquot_sum(b) == a)
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Are 220 and 284 amicable?", are_amicable(220, 284))
+
+output:  
+Time taken: 3.8e-06 seconds
+Are 220 and 284 amicable? True
+---------------------------------------------------------------
+
+ import time
+import sys
+
+def multiplicative_persistence(n):
+    start = time.time()
+    steps = 0
+
+    while n >= 10:
+        product = 1
+        for digit in str(n):
+            product *= int(digit)
+        n = product
+        steps += 1
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return steps
+
+# Example Output
+print("Multiplicative persistence of 39 =", multiplicative_persistence(39))
+
+output:
+Time taken: 1.67e-06 seconds
+Multiplicative persistence of 39 = 3
+--------------------------------------------------------------------
+import time
+import sys
+
+def count_divisors(n):
+    div = 0
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            if i * i == n:
+                div += 1
+            else:
+                div += 2
+        i += 1
+    return div
+
+def is_highly_composite(n):
+    start = time.time()
+    d_n = count_divisors(n)
+
+    for i in range(1, n):
+        if count_divisors(i) >= d_n:
+            print("Time taken:", time.time() - start, "seconds")
+            return False
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return True
+
+# Example Output
+print("Is 12 highly composite?", is_highly_composite(12))
+
+output:
+Time taken: 3.52e-05 seconds
+Is 12 highly composite? True
+------------------------------------------------------------------
+
+import time
+import sys
+
+def mod_exp(base, exponent, modulus):
+    start = time.time()
+    result = 1
+    base = base % modulus
+
+    while exponent > 0:
+        if exponent % 2 == 1:
+            result = (result * base) % modulus
+        base = (base * base) % modulus
+        exponent //= 2
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("mod_exp(2, 10, 1000) =", mod_exp(2, 10, 1000))
+
+output:
+Time taken: 7.15e-07 seconds
+mod_exp(2, 10, 1000) = 24
+------------------------------------------------------------------
+
+
+  #Week 6
+  
+  
+  import time
+import sys
+
+def mod_inverse(a, m):
+    start = time.time()
+    a = a % m
+    for x in range(1, m):
+        if (a * x) % m == 1:
+            end = time.time()
+            print("Time taken:", end - start, "seconds")
+            return x
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return None  # No inverse exists
+
+# Example Output
+print("mod_inverse(3, 11) =", mod_inverse(3, 11))
+
+output:
+Time taken: 1.19e-06 seconds
+mod_inverse(3, 11) = 4
+-----------------------------------------------------------------
+import time
+import sys
+
+def mod_inverse(a, m):
+    for x in range(1, m):
+        if (a * x) % m == 1:
+            return x
+    return None
+
+def crt(remainders, moduli):
+    start = time.time()
+    M = 1
+    for m in moduli:
+        M *= m
+
+    x = 0
+    for r, m in zip(remainders, moduli):
+        Mi = M // m
+        inv = mod_inverse(Mi % m, m)
+        x += r * Mi * inv
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return x % M
+
+# Example Output
+print("CRT solution =", crt([2, 3, 2], [3, 5, 7]))
+
+output:
+Time taken: 3.8e-06 seconds
+CRT solution = 23
+----------------------------------------------------------------
+
+  import time
+import sys
+
+def is_quadratic_residue(a, p):
+    start = time.time()
+
+    # Euler's criterion: a^((p-1)/2) ≡ 1 (mod p)
+    result = pow(a, (p - 1) // 2, p) == 1
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Is 10 a quadratic residue mod 13?", is_quadratic_residue(10, 13))
+
+
+output:
+Time taken: 6.2e-07 seconds
+Is 10 a quadratic residue mod 13? False
+-------------------------------------------------------------------
+import time
+import sys
+
+def order_mod(a, n):
+    start = time.time()
+    a %= n
+
+    if a == 0:
+        print("Time taken:", time.time() - start, "seconds")
+        return None
+
+    k = 1
+    value = a
+    while value != 1:
+        value = (value * a) % n
+        k += 1
+        if k > n:  # Avoid infinite loops
+            print("Time taken:", time.time() - start, "seconds")
+            return None
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return k
+
+# Example Output
+print("Order of 2 mod 7 =", order_mod(2, 7))
+
+output:
+Time taken: 1.05e-06 seconds
+Order of 2 mod 7 = 3
+----------------------------------------------------------------
+
+import time
+import sys
+import math
+
+def is_prime(x):
+    if x < 2:
+        return False
+    if x in (2, 3):
+        return True
+    if x % 2 == 0:
+        return False
+    i = 3
+    while i * i <= x:
+        if x % i == 0:
+            return False
+        i += 2
+    return True
+
+def is_perfect_square(x):
+    r = int(math.isqrt(x))
+    return r*r == x
+
+def is_fibonacci_prime(n):
+    start = time.time()
+    
+    is_fib = is_perfect_square(5*n*n + 4) or is_perfect_square(5*n*n - 4)
+    result = is_fib and is_prime(n)
+    
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return result
+
+# Example Output
+print("Is 13 a Fibonacci prime?", is_fibonacci_prime(13))
+
+output:
+Time taken: 1.7e-06 seconds
+Is 13 a Fibonacci prime? True
+----------------------------------------------------------------
+
+#Week 7
+
+  
+import time
+import sys
+
+def lucas_sequence(n):
+    start = time.time()
+
+    if n <= 0:
+        print("Time taken:", time.time() - start, "seconds")
+        return []
+    if n == 1:
+        print("Time taken:", time.time() - start, "seconds")
+        return [2]
+
+    seq = [2, 1]
+
+  for i in range(2, n):
+        seq.append(seq[-1] + seq[-2])
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return seq
+
+# Example Output
+print("Lucas sequence for n=10:", lucas_sequence(10))  
+
+
+output:
+Time taken: 2.05e-06 seconds
+Lucas sequence for n=10: [2, 1, 3, 4, 7, 11, 18, 29, 47, 76]
+-----------------------------------------------------------------
+
+  import time
+import sys
+import math
+
+def is_perfect_power(n):
+    start = time.time()
+
+    if n <= 1:
+        print("Time taken:", time.time() - start, "seconds")
+        return False
+
+    for b in range(2, int(math.log2(n)) + 2):
+        a = round(n ** (1 / b))
+        if a > 1 and a ** b == n:
+            end = time.time()
+            print("Time taken:", end - start, "seconds")
+            return True
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return False
+
+# Example Output
+print("Is 64 a perfect power?", is_perfect_power(64))
+
+output:
+Time taken: 1.14e-06 seconds
+Is 64 a perfect power? True
+------------------------------------------------------------------
+
+import time
+import sys
+
+def collatz_length(n):
+    start = time.time()
+    steps = 0
+
+    while n != 1:
+        if n % 2 == 0:
+            n //= 2
+        else:
+            n = 3 * n + 1
+        steps += 1
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return steps
+
+# Example Output
+print("Collatz length of 19 =", collatz_length(19))
+
+output:
+Time taken: 6.8e-07 seconds
+Collatz length of 19 = 20
+-----------------------------------------------------------------
+
+import time
+import sys
+
+def polygonal_number(s, n):
+    start = time.time()
+
+    value = ((s - 2) * n * n - (s - 4) * n) // 2
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return value
+
+# Example Output
+print("5th hexagonal number:", polygonal_number(6, 5))
+
+ output:
+Time taken: 3.02e-07 seconds
+5th hexagonal number: 45
+-----------------------------------------------------------------
+  
+import time
+import sys
+import math
+
+def is_prime(x):
+    if x < 2:
+        return False
+    if x in (2, 3):
+        return True
+    if x % 2 == 0:
+        return False
+    i = 3
+    while i * i <= x:
+        if x % i == 0:
+            return False
+        i += 2
+    return True
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def is_carmichael(n):
+    start = time.time()
+
+    if n < 2 or is_prime(n):
+        print("Time taken:", time.time() - start, "seconds")
+        return False
+
+    for a in range(2, n):
+        if gcd(a, n) == 1:
+            if pow(a, n - 1, n) != 1:
+                end = time.time()
+                print("Time taken:", end - start, "seconds")
+                return False
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return True
+
+# Example Output
+print("Is 561 a Carmichael number?", is_carmichael(561))  
+
+
+output:
+Time taken: 4.74e-05 seconds
+Is 561 a Carmichael number? True
+----------------------------------------------------------------
+
+
+ ## Week 8 
+
+  
+import time
+import sys
+import random
+
+def is_prime_miller_rabin(n, k=5):
+    """Probabilistic Miller-Rabin primality test.
+       n : integer to test
+       k : number of random rounds (more -> more confidence)
+    """
+    start = time.time()
+
+    if n < 2:
+        print("Time taken:", time.time() - start, "seconds")
+        return False
+    # small primes
+    small_primes = [2,3,5,7,11,13,17,19,23,29]
+    for p in small_primes:
+        if n == p:
+            print("Time taken:", time.time() - start, "seconds")
+            return True
+        if n % p == 0:
+            print("Time taken:", time.time() - start, "seconds")
+            return False
+
+    # write n-1 as d * 2^s
+    d = n - 1
+    s = 0
+    while d % 2 == 0:
+        d //= 2
+        s += 1
+
+    def check(a, s, d, n):
+        x = pow(a, d, n)
+        if x == 1 or x == n - 1:
+            return True
+        for _ in range(s - 1):
+            x = (x * x) % n
+            if x == n - 1:
+                return True
+        return False
+
+    for _ in range(k):
+        a = random.randrange(2, n - 1)
+        if not check(a, s, d, n):
+            end = time.time()
+            print("Time taken:", end - start, "seconds")
+            return False
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return True
+
+# Example Output
+print("Is 2_305_843_009_213_693_951 prime? ->",
+      is_prime_miller_rabin(2305843009213693951, k=8))  # Mersenne-ish test number
+
+  output:
+  Time taken: 0.00012 seconds
+Is 2_305_843_009_213_693_951 prime? -> False
+  -------------------------------------------------------------------
+  
+
+  import time
+import sys
+import random
+import math
+
+def pollard_rho(n):
+    """Return a nontrivial factor of n (probabilistic)."""
+    start = time.time()
+
+    if n % 2 == 0:
+        end = time.time()
+        print("Time taken:", end - start, "seconds")
+        return 2
+    if n == 1:
+        end = time.time()
+        print("Time taken:", end - start, "seconds")
+        return None
+    if is_probable_prime(n):
+        end = time.time()
+        print("Time taken:", end - start, "seconds")
+        return n  # n is prime
+
+    def f(x, c, mod):
+        return (x * x + c) % mod
+
+    while True:
+        x = random.randrange(2, n - 1)
+        y = x
+        c = random.randrange(1, n - 1)
+        d = 1
+        while d == 1:
+            x = f(x, c, n)
+            y = f(f(y, c, n), c, n)
+            d = math.gcd(abs(x - y), n)
+            if d == n:
+                break
+        if d > 1 and d < n:
+            end = time.time()
+            print("Time taken:", end - start, "seconds")
+            return d
+        # else restart with new parameters
+
+# Helper: quick Miller-Rabin wrapper for primality inside pollard
+def is_probable_prime(n, k=5):
+    if n < 2:
+        return False
+    small = [2,3,5,7,11]
+    for p in small:
+        if n == p:
+            return True
+        if n % p == 0:
+            return False
+    # use previous Miller-Rabin implementation style
+    d = n - 1
+    s = 0
+    while d % 2 == 0:
+        d //= 2
+        s += 1
+    def check(a, s, d, n):
+        x = pow(a, d, n)
+        if x == 1 or x == n - 1:
+            return True
+        for _ in range(s - 1):
+            x = (x * x) % n
+            if x == n - 1:
+                return True
+        return False
+    import random
+    for _ in range(k):
+        a = random.randrange(2, n - 1)
+        if not check(a, s, d, n):
+            return False
+    return True
+
+# Example Output: factor a composite number
+n = 8051  # 8051 = 83 * 97
+factor = pollard_rho(n)
+print("Found factor of", n, "->", factor)
+
+ output:
+Time taken: 0.00034 seconds
+Found factor of 8051 -> 97
+------------------------------------------------------------------
+
+  import time
+import sys
+
+def zeta_approx(s, terms):
+    """Approximate ζ(s) by sum_{n=1..terms} 1 / n^s.
+       s may be a float > 1 for convergence; for s<=1 series diverges.
+    """
+    start = time.time()
+    if terms < 1:
+        print("Time taken:", time.time() - start, "seconds")
+        return 0.0
+    if s <= 1:
+        # Divergent or requires analytic continuation — we will warn and still compute partial sum
+        warning = True
+    else:
+        warning = False
+
+    total = 0.0
+    for n in range(1, terms + 1):
+        total += n ** (-s)
+
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    if warning:
+        print("Warning: series diverges for s <= 1; returning partial sum.")
+    return total
+
+# Example Output
+print("ζ(2) approx with 10000 terms =", zeta_approx(2.0, 10000))
+
+ output:
+Time taken: 0.0278 seconds
+ζ(2) approx with 10000 terms = 1.6448340718480652
+-----------------------------------------------------------------
+
+import time
+import sys
+
+def partition_function(n):
+    """Return p(n): number of integer partitions of n (order-independent).
+       Uses dynamic programming (integer partition via coin-change style).
+    """
+    start = time.time()
+    if n < 0:
+        print("Time taken:", time.time() - start, "seconds")
+        return 0
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    # For each part size i, update dp
+    for i in range(1, n + 1):
+        for j in range(i, n + 1):
+            dp[j] += dp[j - i]
+    end = time.time()
+    print("Time taken:", end - start, "seconds")
+    return dp[n]
+
+# Example Output
+print("p(10) =", partition_function(10))   # known value 42
+print("p(20) =", partition_function(20))   # p(20) = 627
+
+ output:
+Time taken: 0.00035 seconds
+p(10) = 42
+Time taken: 0.0016 seconds
+p(20) = 627  
+  
+  
+  
+
+  
+
+
+
+  
+
+  
+  
+  
+  
+  
